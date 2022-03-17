@@ -1,7 +1,11 @@
 # STS
 Save Their Souls is a raspberryPi based project designed to teach students computing topics
 
-
+Contents of this README
+1) Materials
+2) Software
+3) Additional Resources
+4) Setting up the Pi 
 
           Materials (working list) 
 
@@ -9,9 +13,11 @@ Save Their Souls is a raspberryPi based project designed to teach students compu
 -VILROS RaspberryPi Clear Case    (Recommended) 
 -HDMI cable
 -HDMI enabled display
--16 gb SD card
+-SD card (minimum of 8GB)
 -SD card reader                   (only necessary if your computer does not have one) 
--Micro USB (power supply) 
+-Micro USB (power supply 2.5 amps) 
+-USB enabled Mouse
+-USB enabled Keyboard 
 
         Software (working list) 
 
@@ -55,12 +61,29 @@ and wait for this download to finish.
 8) When the download has finished, find the zip file and extract all to a location you will access again.
 Wait for the SD card to finish formatting. 
 
-9) Once the SD card has finished formatting, Select the extracted NOOB file, copy it, then navigate to the
-SD card using file explorer, go into it and paste the copied file into the SD card. Wait for this process to finish. 
+9) Once the SD card has finished formatting, go into the extracted NOOB file, copy all of its contents, then 
+navigate to the SD card using file explorer, go into it and paste the copied file into the SD card. 
+Wait for this process to finish. 
 
 10) Now setup the physical enviornment of the Pi, make sure to connect the Pi to power last! Safely eject the SD card 
-from the computer and put it into the Pi. Connect the HDMI enabled display to power and connect the HDMI display to the
-HDMI port of the Pi. 
+from the computer and put it into the Pi (located on the underside of the board under the port labeled DISPLAY). 
+Connect the HDMI enabled display to power and connect the HDMI display to the port on the Pi labeled HDMI.  
+	*If the Casing to the Pi gets in the way of the HDMI cable, remove the SD card THEN remove the casing and
+	continue to use the Pi with no casing while you need the display. When you are done remove the SD card then 
+	put on the casing and put your SD card back in to keep everything together and protected. 
+
+11) If all has gone well the display should show a boot process then show a prompt for selecting an OS. 
+On this screen select the Raspberry Pi OS Full (32-bit) option then navigate to the network tab and select
+the network you would like to connect to for downloading additional packages. Optionally, you can connect
+an ethernet instead of connecting to a network for the same effect. 
+
+12) Select install at the top of the prompt with Pi OS Full selected and click yes then wait for the OS to install 
+on your device. 
+
+13) Once the OS boots up on your device follow the guided prompts to setup the Pi relevant to your needs. Connect to
+a network or keep your ethernet attatched and let the system update itself as necessary. Once the final download
+finishes your Pi will be in desktop mode and fully functional to begin operating on. 
+
 
 
 
