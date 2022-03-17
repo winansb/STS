@@ -5,7 +5,9 @@ Contents of this README
 1) Materials
 2) Software
 3) Additional Resources
-4) Setting up the Pi 
+4) Setting up the Pi NOOBS
+5) Setting up the Pi with Raspberry Pi Imager (Recommended) 
+6) Ethernet cable (if wifi is unavaible) 
 
           Materials (working list) 
 
@@ -36,7 +38,7 @@ the guide written out in this file.
 setting up OS for the Pi on mac and linux in addition to Windows. 
 
 
-        Setting up the Pi (For Windows machines) 
+        Setting up the Pi using NOOBS (For Windows machines) 
 
 1) Get all of the items on the materials list.
     1.5) mount the Pi to the clear case to prevent damage to the device and make transportation easier.
@@ -84,6 +86,32 @@ on your device.
 a network or keep your ethernet attatched and let the system update itself as necessary. Once the final download
 finishes your Pi will be in desktop mode and fully functional to begin operating on. 
 
+
+	Setting up the Raspberry Pi with Raspberry Pi Imager
+1) Get all items on the material list
+	1.5) Mount the Pi inside the plastic casing for safety
+
+2) Follow this link  https://www.raspberrypi.com/software/  and download the Raspberry Pi Imager following its prompts
+selecting the defaults. 
+
+3) Use the SD chip reader with the SD card inserted to connect to your computer. 
+
+4) Open Raspberry Pi Imager then select the drop down for OS and scroll all the way down the the erase and reformat as 
+FAT32 option. Then select your SD card and write. wait for this to complete 
+
+5) Select the Raspberry Pi 32-bit option then select your SD card and finish with Write. Wait for this to complete. 
+
+6) Once done remove your SD card and put it in the Pi in the microSD slot on the underside of the Pi (on the 
+underside of the display port).
+
+7) Plug your Pi into the display with the HDMI cord, plug in your mouse and keyboard then plug the Pi into power 
+using the micro-USB. 
+
+8) The Pi will begin an initialization and boot process. Follow the instructions of any prompts given. When the 
+prompt pops up for connecting to the network either enable the connection with your prefered wifi or plug in 
+an ethernet cable. 
+
+9) Let the Pi update with the information it gathers from the distro list. Your Pi is now setup and ready to run!
 
 
 
