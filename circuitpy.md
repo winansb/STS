@@ -13,7 +13,19 @@
 
 ## Install CircuitPython BME280
 
-`pip3 install adafruit-circuitpython-adxl34x`
+`pip3 install adafruit-circuitpython-mpu360`
+
+## install pygame
+
+`pip3 install pygame`
+
+## Run the game
+
+`python3 pong.py`
+
+    This runs a pong game which uses the drivers in the Drivers/ directory
+    Currently without hardware attached it is just using simulated data to move the controller.
+
 
 
 
