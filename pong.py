@@ -136,102 +136,22 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = self.screenwidth - self.width
         if self.rect.x < 0:
             self.rect.x = 0
- 
 
+    def updateAI(self, ball_pos, paddle_pos):
+        self.joystick.update(paddle_pos, ball_pos)
+        # This gets the position of the axis on the game controller
+        # It returns a number between -1.0 and +1.0
+        horiz_axis_pos= self.joystick.up
 
+        # Move x according to the axis. We multiply by 15 to speed up the movement.
+        self.rect.x=int(self.rect.x+horiz_axis_pos*15)
 
-def start_the_game():
+        # Make sure we don't push the player paddle off the right side of the screen
+        if self.rect.x > self.screenwidth - self.width:
+            self.rect.x = self.screenwidth - self.width
+        if self.rect.x < 0:
+            self.rect.x = 0
 
-    # Create the ball
-    ball = Ball()
-    # Create a group of 1 ball (used in checking collisions)
-    balls = pygame.sprite.Group()
-    balls.add(ball)
-
-    # Count the joysticks the computer has
-    joystick1 = control.output()
-
-    # Create the player paddle object
-    player1 = Player(joystick1,580)
-    #player2 = Player(joystick2,25)
-
-    movingsprites = pygame.sprite.Group()
-    movingsprites.add(player1)
-    #movingsprites.add(player2)
-    movingsprites.add(ball)
-
-    clock = pygame.time.Clock()
-    done = False
-    exit_program = False
-
-    while not exit_program:
-        score1 = 0
-        score2 = 0
-        # Clear the screen
-
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                exit_program = True
-        screen.fill(BLACK)
-        # Stop the game if there is an imbalance of 3 points
-        if abs(score1 - score2) > 3:
-            done = True
-
-        if not done:
-            # Update the player and ball positions
-            player1.update()
-            #player2.update()
-            ball.update()
-
-        # If we are done, print game over
-        if done:
-            text = font.render("Game Over", 1, (200, 200, 200))
-            textpos = text.get_rect(centerx=background.get_width()/2)
-            textpos.top = 50
-            screen.blit(text, textpos)
-
-        # See if the ball hits the player paddle
-        if pygame.sprite.spritecollide(player1, balls, False):
-            # The 'diff' lets you try to bounce the ball left or right depending where on the paddle you hit it
-            diff = (player1.rect.x + player1.width/2) - (ball.rect.x+ball.width/2)
-
-            # Set the ball's y position in case we hit the ball on the edge of the paddle
-            ball.y = 570
-            ball.bounce(diff)
-            score1 += 1
-
-        # See if the ball hits the player paddle
-        #if pygame.sprite.spritecollide(player2, balls, False):
-            # The 'diff' lets you try to bounce the ball left or right depending where on the paddle you hit it
-
-        #    diff = (player2.rect.x + player2.width/2) - (ball.rect.x+ball.width/2)
-
-            # Set the ball's y position in case we hit the ball on the edge of the paddle
-         #   ball.y = 40
-         #   ball.bounce(diff)
-         #   score2 += 1
-
-        # Print the score
-        scoreprint = "Player 1: "+str(score1)
-        text = font.render(scoreprint, 1, WHITE)
-        textpos = (0, 0)
-        screen.blit(text, textpos)
-
-        scoreprint = "Player 2: "+str(score2)
-        text = font.render(scoreprint, 1, WHITE)
-        textpos = (300, 0)
-        screen.blit(text, textpos)
-
-        # Draw Everything
-        movingsprites.draw(screen)
-
-        # Update the screen
-        pygame.display.flip()
-
-        clock.tick(30)
-
-    pygame.quit()
 # Call this function so the Pygame library can initialize itself
 pygame.init()
 
@@ -288,6 +208,7 @@ while True:
                 if mouse[1] >= 200 and mouse[1] <= 250:
                     print("Start the game")
                     started = 1
+                    single = 1
                 elif mouse[1] >= 400 and mouse[1] <= 450:
                     pygame.quit()
                     sys.exit()
@@ -309,6 +230,8 @@ while True:
     pygame.display.update()
 
     while started:
+        score1 = 0
+        score2 = 0
         ball = Ball()
         # Create a group of 1 ball (used in checking collisions)
         balls = pygame.sprite.Group()
@@ -316,14 +239,15 @@ while True:
 
         # Count the joysticks the computer has
         joystick1 = control.output()
+        joystick2 = control.AI_output()
 
         # Create the player paddle object
         player1 = Player(joystick1, 580)
-        # player2 = Player(joystick2,25)
+        player2 = Player(joystick2,25)
 
         movingsprites = pygame.sprite.Group()
         movingsprites.add(player1)
-        # movingsprites.add(player2)
+        movingsprites.add(player2)
         movingsprites.add(ball)
 
         clock = pygame.time.Clock()
@@ -331,8 +255,7 @@ while True:
         exit_program = False
 
         while not exit_program:
-            score1 = 0
-            score2 = 0
+
             # Clear the screen
 
             for event in pygame.event.get():
@@ -346,7 +269,8 @@ while True:
             if not done:
                 # Update the player and ball positions
                 player1.update()
-                # player2.update()
+                if single:
+                    player2.updateAI((ball.x, ball.y), player2.rect.x)
                 ball.update()
 
             # If we are done, print game over
@@ -355,6 +279,8 @@ while True:
                 textpos = text.get_rect(centerx=background.get_width() / 2)
                 textpos.top = 50
                 screen.blit(text, textpos)
+                score1 = 0
+                score2 = 0
 
             # See if the ball hits the player paddle
             if pygame.sprite.spritecollide(player1, balls, False):
@@ -367,15 +293,15 @@ while True:
                 score1 += 1
 
             # See if the ball hits the player paddle
-            # if pygame.sprite.spritecollide(player2, balls, False):
+            if pygame.sprite.spritecollide(player2, balls, False):
             # The 'diff' lets you try to bounce the ball left or right depending where on the paddle you hit it
 
-            #    diff = (player2.rect.x + player2.width/2) - (ball.rect.x+ball.width/2)
+                diff = (player2.rect.x + player2.width/2) - (ball.rect.x+ball.width/2)
 
             # Set the ball's y position in case we hit the ball on the edge of the paddle
-            #   ball.y = 40
-            #   ball.bounce(diff)
-            #   score2 += 1
+                ball.y = 40
+                ball.bounce(diff)
+                score2 += 1
 
             # Print the score
             scoreprint = "Player 1: " + str(score1)
