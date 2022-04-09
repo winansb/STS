@@ -2,3 +2,4 @@
 Drivers/__pycache__/GetInput.cpython-310.pyc
 circuitpy.md
 Drivers/__pycache__/Connect.cpython-310.pyc
+*.pyc

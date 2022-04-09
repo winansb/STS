@@ -1,5 +1,15 @@
 # Circuit PI installation process
 
+## Documentation - Lesson  
+## Fix up bugs, Finish socket/communication
+## CS - Python packages?
+## H - S lesson sensor data CE
+## User interface - Game - Digital arts and sciences.
+## Machine learning and data collection - Opposing
+## Human centered computing (UI/Testing)
+
+
+
 ## Update PI
 
 1. `sudo apt-get update`

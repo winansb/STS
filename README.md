@@ -1,89 +1,51 @@
 # STS
 Save Their Souls is a raspberryPi based project designed to teach students computing topics
 
-Contents of this README
-1) Materials
-2) Software
-3) Additional Resources
-4) Setting up the Pi 
+## Computing topics covered
+1. Computer Engineering
+2. Computer Science
+3. Human Centered computing
+4. Data Science 
+5. Graphics/Design
 
-          Materials (working list) 
+## Project
+This repository contains code and lessons plans for a game and joystick drivers. 
+The goal of this project is to teach fundamental programming concepts to a beginner audience using specific functionalities as examples and mini projects for the students.
 
--RaspberryPi 3 Model B
--VILROS RaspberryPi Clear Case    (Recommended) 
--HDMI cable
--HDMI enabled display
--SD card (minimum of 8GB)
--SD card reader                   (only necessary if your computer does not have one) 
--Micro USB (power supply 2.5 amps) 
--USB enabled Mouse
--USB enabled Keyboard 
+## Overview of Computing topics
 
-        Software (working list) 
+### Computer Engineering
 
--SD Memory Card Formatter for Windows
-https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/
--New Out Of Box Software (NOOBS) for Pi
-downloads.raspberrypi.org/noobs  (copy and past this into your browser for the download) 
+Computer engineering is the discipline of hardware to software connections.
+In this project, the hardware to software connection is between the custom controller and the game.
 
-        Additional Resources
+Hardware information can be passed to software processes in a few standardized ways. 
+This project will go over two of these ways: spi and i2c without going into too many specifics.
+Students will learn how to get information from sensors with basic bread boarding and simple python scripts. 
 
--https://static.raspberrypi.org/files/legacy/qsg.pdf 
-    This is a guide for setting up the Pi. Consider using this if you have any problems with 
-the guide written out in this file. 
--https://www.raspberrypi.com/software/
-    This source is useful for further instruction on setting up other OS on the Pi and for 
-setting up OS for the Pi on mac and linux in addition to Windows. 
+### Computer Science
 
+Computer science is a very broad discipline describing the way in which we communicate with and use computers.
+In this project, everything from the data collection, data processing, to game design all fall under the scope of computer science.
+For the sake of clarity however, we will be focusing on how computers communicate amongst each other as our main focus when discussing computer science.
 
-        Setting up the Pi (For Windows machines) 
+Network communication is a very broad and complicated subject so we will be focusing on the basics. 
+`Finish describing basic computer communication topics`
 
-1) Get all of the items on the materials list.
-    1.5) mount the Pi to the clear case to prevent damage to the device and make transportation easier.
+The game which is included in this project will contain multiplayer capabilites. We will use the multiple different methods of communication to demonstrate how computers initiate communication, where and how computers send information, and how we process that information in a way that's useful to us. 
 
-2) Go to the following link and download the memory card formatter for windows. 
-https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/
-Wait until the installation is done.
+### Data Science
 
-3) Navigate to the folder where the download installed to and run the executable.
+Data science is the process of collecting and processing large amounts of data to produce a useful or desireable function.
+In this project, data science will be applied by creating different levels of AI for the opponent in single player mode.
 
-4) Plug in your SD card reader and SD card to your computer.
+Machine learning `Give definition and use cases`
 
-5) double click the "SD Card Formatter" you just downloaded, I leave the shortcut on my desktop for
-easy of access. 
+### Human Centered Computing
 
-6) Find your SD card on the SD Card Formatter Pop-up and Overwrite format the SD card
+Human Centered Computing deals with the development and deployment of mixed systems focused on human computer interactions. 
+`Describe how it is relevent to the project`
 
-7) This will take some time to run, during this copy and paste the following into your browser
-downloads.raspberrypi.org/noobs
-and wait for this download to finish. 
+### Graphical and User interface design 
 
-8) When the download has finished, find the zip file and extract all to a location you will access again.
-Wait for the SD card to finish formatting. 
-
-9) Once the SD card has finished formatting, go into the extracted NOOB file, copy all of its contents, then 
-navigate to the SD card using file explorer, go into it and paste the copied file into the SD card. 
-Wait for this process to finish. 
-
-10) Now setup the physical enviornment of the Pi, make sure to connect the Pi to power last! Safely eject the SD card 
-from the computer and put it into the Pi (located on the underside of the board under the port labeled DISPLAY). 
-Connect the HDMI enabled display to power and connect the HDMI display to the port on the Pi labeled HDMI.  
-	*If the Casing to the Pi gets in the way of the HDMI cable, remove the SD card THEN remove the casing and
-	continue to use the Pi with no casing while you need the display. When you are done remove the SD card then 
-	put on the casing and put your SD card back in to keep everything together and protected. 
-
-11) If all has gone well the display should show a boot process then show a prompt for selecting an OS. 
-On this screen select the Raspberry Pi OS Full (32-bit) option then navigate to the network tab and select
-the network you would like to connect to for downloading additional packages. Optionally, you can connect
-an ethernet instead of connecting to a network for the same effect. 
-
-12) Select install at the top of the prompt with Pi OS Full selected and click yes then wait for the OS to install 
-on your device. 
-
-13) Once the OS boots up on your device follow the guided prompts to setup the Pi relevant to your needs. Connect to
-a network or keep your ethernet attatched and let the system update itself as necessary. Once the final download
-finishes your Pi will be in desktop mode and fully functional to begin operating on. 
-
-
-
-
+Graphics and User Interface(UI) design is the processes of creating visuals for different aspects of a program which you and I will interact with. 
