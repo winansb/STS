@@ -1,6 +1,7 @@
 #from Drivers.Connect import gyro
 from random import randrange
 from Drivers.AIpaddle import paddleAI
+from Drivers.socket_driver import Server
 
 # This is a wrapper class for the gyroscope data. It will contain the data output from the gyroscope and other
 # important parameters which will affect the speed and movement of the paddles.
@@ -19,15 +20,32 @@ class gyro_data:
         self.current_traj = [x, y, z]
 
 
+class LAN_output:
+
+    up = 0
+
+    def __init__(self, s):
+        self.up = 0
+        self.server = Server(s).listen()
+
+    def get_data(self, socket):
+        self.server.get_data()
+
+    def update(self, socket):
+        self.get_data(socket)
+        self.up = self.server.data
 
 class AI_output:
+
     up = 0
+
     def __init__(self):
         self.up = 0
         self.ai = paddleAI()
 
     def set_input(self, x):
         self.up = x
+
     def get_input(self, new_pos, ball_pos):
         self.ai.update(new_pos, ball_pos)
 
@@ -35,6 +53,7 @@ class AI_output:
         self.get_input(new_pos, ball_pos)
         self.ai.calc_new_pos()
         self.up = self.ai.traj
+
 # A container class for the output data using the gyroscope data stored in gyro_data.
 class output:
     MAX_SENSITIVITY = 1 # the speed of the paddles.

@@ -1,6 +1,7 @@
 import math
 import pygame
 import sys
+import socket
 import pygame_menu
 import random
 import Drivers.GetInput as control
@@ -191,6 +192,8 @@ option3text = font.render('Exit', True, color_d, (color))
 option3rect = option3text.get_rect()
 option3rect.center = (400, 400)
 started = 0
+multi = 0
+single = 0
 
 while True:
     screen.fill(color_l)
@@ -209,6 +212,10 @@ while True:
                     print("Start the game")
                     started = 1
                     single = 1
+                if mouse[1] >= 300 and mouse[1] <= 350:
+                    print("multiplayer mode")
+                    started = 1
+                    multi = 1
                 elif mouse[1] >= 400 and mouse[1] <= 450:
                     pygame.quit()
                     sys.exit()
@@ -239,7 +246,11 @@ while True:
 
         # Count the joysticks the computer has
         joystick1 = control.output()
-        joystick2 = control.AI_output()
+        if single:
+            joystick2 = control.AI_output()
+        if multi:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            joystick2 = control.LAN_output(s)
 
         # Create the player paddle object
         player1 = Player(joystick1, 580)
@@ -321,8 +332,8 @@ while True:
             pygame.display.flip()
 
             clock.tick(30)
-
+        if multi:
+            joystick2.server.s.close()
         pygame.quit()
         sys.exit()
 
-# Set the title of the window

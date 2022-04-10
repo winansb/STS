@@ -1,4 +1,3 @@
-import sys
 
 class paddleAI:
     pos = 0
